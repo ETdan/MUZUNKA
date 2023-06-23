@@ -5,7 +5,7 @@ include 'view/top.php';
 ?>
 
 <div class = "content-playlist">
-    <div class = "content-playlist-info">
+    <!-- <div class = "content-playlist-info">
         <div class = "content-playlist-info-pic">
             <img class="one" src = "images/OIG.jpg" >
         </div>
@@ -14,7 +14,7 @@ include 'view/top.php';
             <p class="content-playlist-info-detail-detail">Music . Playlist . 28 Tracks . 01:11:14 . 2020 </p>
             <div><span class="material-symbols-outlined">graphic_eq</span></div>
         </div>
-    </div>
+    </div> -->
 
     <div class = "content-playlist-song">
         <div class="content-track">

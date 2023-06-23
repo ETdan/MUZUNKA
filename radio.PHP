@@ -1,37 +1,42 @@
 <?php 
 include 'view/headers.php';
+echo "<link rel='stylesheet' href='../style/playlist.css'>";
+?>
+
+<?php 
 include 'view/top.php';
-$filename = "Wegdayit - Rega Bey Bereggae.mp3";
 
-// Open the MP3 file and read its contents
-// $file = fopen($filename, "r");
-// $data = fread($file, filesize($filename));
-// fclose($file);
+// $filename = "Wegdayit - Rega Bey Bereggae.mp3";
 
-// Find the position of the "duration" frame in the ID3v2 tag
-$pos = strpos($data, "TLEN");
+// // Open the MP3 file and read its contents
+// // $file = fopen($filename, "r");
+// // $data = fread($file, filesize($filename));
+// // fclose($file);
 
-if ($pos === false) {
-    // If the "duration" frame is not found, try to find the Xing header
-    $pos = strpos($data, "Xing");
+// // Find the position of the "duration" frame in the ID3v2 tag
+// $pos = strpos($data, "TLEN");
 
-    if ($pos === false) {
-        // If the Xing header is not found, assume a duration of 0
-        $duration = 0;
-        echo "not found\n";
-    } else {
-        // If the Xing header is found, extract the duration from it
-        $data = substr($data, $pos + 4, 4);
-        $duration = hexdec(bin2hex($data));
-    }
-} else {
-    // If the "duration" frame is found, extract the duration from it
-    $data = substr($data, $pos + 4, 4);
-    $duration = hexdec(bin2hex($data));
-}
+// if ($pos === false) {
+//     // If the "duration" frame is not found, try to find the Xing header
+//     $pos = strpos($data, "Xing");
 
-// Output duration in minutes and seconds
-echo "Duration: " . gmdate("i:s", $duration);
+//     if ($pos === false) {
+//         // If the Xing header is not found, assume a duration of 0
+//         $duration = 0;
+//         echo "not found\n";
+//     } else {
+//         // If the Xing header is found, extract the duration from it
+//         $data = substr($data, $pos + 4, 4);
+//         $duration = hexdec(bin2hex($data));
+//     }
+// } else {
+//     // If the "duration" frame is found, extract the duration from it
+//     $data = substr($data, $pos + 4, 4);
+//     $duration = hexdec(bin2hex($data));
+// }
+
+// // Output duration in minutes and seconds
+// echo "Duration: " . gmdate("i:s", $duration);
 ?>
 <!-- <div class="test">
 <p>test FM</p>
@@ -40,12 +45,12 @@ echo "Duration: " . gmdate("i:s", $duration);
     Your browser doesn't support the HTML5 <audio> tag.
         </audio>
     </div> -->
-    <div class="content-track">
-                    <div class="content-image">
+    <div class="content-track" onclick="playAudio()">
+                    <div class="content-image" onclick="playAudio()">
                         <img src="/images/OIG.jpg" alt="">
                     </div>
                     <div class="content-song-detail">
-                        <div class="content-song-name">wetata</div>
+                        <div class="content-song-name" onclick="playAudio()">wetata</div>
                         <div class="content-artist">teshome asegd</div>
                     </div>
                     <div class="content-like">
@@ -174,3 +179,9 @@ http://s02.whooshserver.net:9091/live.mp3
     include 'view/bottom.php'
 ?>
 
+<script>
+    function playAudio() {
+        myAudio=new Audio("https://stream-159.zeno.fm/1cyn1as4v68uv?zs=yImzP1vkSCWja-MqfNhVxg");
+        myAudio.play();
+}
+</script>
