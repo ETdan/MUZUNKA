@@ -1,64 +1,71 @@
 <?php 
 include 'view/headers.php';
 echo "<link rel='stylesheet' href='../style/playlist.css'>";
+echo "<link rel='stylesheet' href='../style/trackes'>";
+echo "<link rel='stylesheet' href='../style/radio.css'>";
 ?>
 
 <?php 
 include 'view/top.php';
-
-// $filename = "Wegdayit - Rega Bey Bereggae.mp3";
-
-// // Open the MP3 file and read its contents
-// // $file = fopen($filename, "r");
-// // $data = fread($file, filesize($filename));
-// // fclose($file);
-
-// // Find the position of the "duration" frame in the ID3v2 tag
-// $pos = strpos($data, "TLEN");
-
-// if ($pos === false) {
-//     // If the "duration" frame is not found, try to find the Xing header
-//     $pos = strpos($data, "Xing");
-
-//     if ($pos === false) {
-//         // If the Xing header is not found, assume a duration of 0
-//         $duration = 0;
-//         echo "not found\n";
-//     } else {
-//         // If the Xing header is found, extract the duration from it
-//         $data = substr($data, $pos + 4, 4);
-//         $duration = hexdec(bin2hex($data));
-//     }
-// } else {
-//     // If the "duration" frame is found, extract the duration from it
-//     $data = substr($data, $pos + 4, 4);
-//     $duration = hexdec(bin2hex($data));
-// }
-
-// // Output duration in minutes and seconds
-// echo "Duration: " . gmdate("i:s", $duration);
+include 'view/top-second.php';
 ?>
-<!-- <div class="test">
-<p>test FM</p>
-<audio controls>
-    <source src="http://stream2.305stream.com:8042/live" type="audio/mpeg">
-    Your browser doesn't support the HTML5 <audio> tag.
-        </audio>
-    </div> -->
-    <div class="content-track" onclick="playAudio()">
-                    <div class="content-image" onclick="playAudio()">
-                        <img src="/images/OIG.jpg" alt="">
-                    </div>
-                    <div class="content-song-detail">
-                        <div class="content-song-name" onclick="playAudio()">wetata</div>
-                        <div class="content-artist">teshome asegd</div>
-                    </div>
-                    <div class="content-like">
-                        <span class="material-symbols-outlined">heart_plus</span><a href="http://localhost:3000/liked.php"></a>
-                    </div>
-                    <div class="content-duration">3:36</div>
-                    <div class="content-kebab">:</div>
+<div class="radio-setup">
+    <div class="content-track">
+            <div class="content-image">
+                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
+            </div>
+            <div class="content-song-detail">
+                <div class="content-song-name">wetata</div>
+                <div>
+                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
+                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
     </div>
+
+    <div class="content-track">
+            <div class="content-image">
+                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
+            </div>
+            <div class="content-song-detail">
+                <div class="content-song-name">Sheger FM</div>
+                <div>
+                    <audio src="http://stream.zenolive.com/cwkxynwagt5tv" id="id">
+                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+    </div>
+
+    <div class="content-track">
+            <div class="content-image">
+                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
+            </div>
+            <div class="content-song-detail">
+                <div class="content-song-name">BISRAT FM</div>
+                <div>
+                    <audio src="https://stream-159.zeno.fm/1cyn1as4v68uv?zs=yImzP1vkSCWja-MqfNhVxg" id="id">
+                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+    </div>
+  
+    <div class="content-track">
+            <div class="content-image">
+                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
+            </div>
+            <div class="content-song-detail">
+                <div class="content-song-name">EBC FM</div>
+                <div>
+                    <audio src="https://stream-156.zeno.fm/rb6wbrap7yzuv?zs=HdNGbcyZTUWhaRRIUg-e-w"id="id">
+                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+    </div>
+                    
 <div class="sheger">
 <p>SHEGER FM</p>
 <audio controls>
@@ -174,14 +181,81 @@ http://s02.whooshserver.net:9091/live.mp3
         <!-- https://zeno.fm/_next/image/?url=https%3A%2F%2Fimages.zeno.fm%2F9I98ubcjY1NFS-7DI09VXLbslkHcDFsPBBDo3a6DgUQ%2Frs%3Afit%3A240%3A240%2Fg%3Ace%3A0%3A0%2FaHR0cHM6Ly9zdHJlYW0tdG9vbHMuemVub21lZGlhLmNvbS9jb250ZW50L3N0YXRpb25zL2FneHpmbnBsYm04dGMzUmhkSE55TWdzU0NrRjFkR2hEYkdsbGJuUVlnSURBX0lLMWhnc01DeElPVTNSaGRHbHZibEJ5YjJacGJHVVlnSUNBZ0lEeWlBb01vZ0VFZW1WdWJ3L2ltYWdlLz91cGRhdGVkPTE2NjE3NjM1MDUwMDA.webp&w=1200&q=100-->
     </audio>
 </div>
+</div>
+
 <!-- from other file -- /view/top.php -->
 <?php 
     include 'view/bottom.php'
 ?>
 
 <script>
-    function playAudio() {
-        myAudio=new Audio("https://stream-159.zeno.fm/1cyn1as4v68uv?zs=yImzP1vkSCWja-MqfNhVxg");
-        myAudio.play();
-}
+var contentTrack=document.querySelectorAll(".content-track");
+
+
+var player=document.querySelector(".player");
+var playSong=document.getElementById("playSong");
+var pauseSong=document.getElementById("pauseSong");
+
+var nextSong=document.getElementById("nextSong");
+var prevSong=document.getElementById("prevSong");
+
+nextSong.style.display="none";
+prevSong.style.display="none";
+
+var audio=document.getElementById("id");
+var first=0;
+
+var progress;
+
+contentTrack.forEach(function(track){
+    track.addEventListener("click",function(e){
+        
+        //  attempt 1 to stop a song when another is played
+        // if(!first)
+        //     first=1;
+        // else
+        //     audio.pause();
+        //  attempt 1 to stop a song when another is played
+            if(!audio.paused){
+                audio.pause();
+                audio=track.children[1].children[1].children[0];
+                audio.play();
+            }
+            else
+            {
+                audio=track.children[1].children[1].children[0];
+                if(audio.duration > 0 && !audio.paused)
+                {
+                    audio.pause();
+                    playSong.textContent="pause_circle";
+                }
+                else
+                {
+                    audio.play();
+                    playSong.textContent="play_arrow";
+    
+                }
+
+                player.setAttribute("data-url",track.getAttribute("data-url"));
+                console.log(player.getAttribute("data-url"));
+            }
+            
+
+        })
+    })
+
+playSong.addEventListener("click",function(e){
+    // audio.play();
+    if(audio.duration > 0 && !audio.paused)
+    {
+        audio.pause();
+        e.target.textContent="pause_circle";
+    }
+    else
+    {
+        audio.play();
+        e.target.textContent="play_arrow";
+    }
+})
+
 </script>

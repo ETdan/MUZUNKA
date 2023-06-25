@@ -1,6 +1,6 @@
     <title>MUZUNKA</title>
     </style>
-</head>/
+</head>
 <body>
     <div class="sup-con">
 
@@ -20,7 +20,7 @@
                         <div class="icon"><span class="material-symbols-outlined">music_note</span><a href="http://localhost:3000/trackes.php"> Trackes </a></div>
                         <div class="icon"><span class="material-symbols-outlined">queue_music</span><a href="http://localhost:3000/playlist.php"> Playlist </a></div>
                         <div class="icon"><span class="material-symbols-outlined">heart_plus</span><a href="http://localhost:3000/liked.php"> Liked </a></div>
-                        <div class="icon"><span class="material-symbols-outlined">album</span> <a href="http://localhost:3000/.php"> Artist </a></div>
+                        <div class="icon"><span class="material-symbols-outlined">album</span> <a href="http://localhost:3000/artist.php"> Artist </a></div>
                         <div class="icon"><span class="material-symbols-outlined">art_track</span><a href="http://localhost:3000/album.php"> Album </a></div>
                         <div class="icon"><span class="material-symbols-outlined">radio</span><a href="http://localhost:3000/radio.php"> Radio </a></div>
                     </div>
@@ -36,19 +36,12 @@
                 </div>
             </div>
             <div class="content"> 
-            <div class = "content-playlist">
-                <!--  -->
-    <div class = "content-playlist-info">
-        <div class = "content-playlist-info-pic">
-            <img class="one" src = "images/OIG.jpg" >
-        </div>
-        <div class = "content-playlist-info-detail">
-            <h2 class="content-playlist-info-detail-title"> Sound Waveform </h2>
-            <p class="content-playlist-info-detail-detail">Music . Playlist . 28 Tracks . 01:11:14 . 2020 </p>
-            <div><span class="material-symbols-outlined">graphic_eq</span></div>
-        </div>
-    </div>
-    <div class = "content-playlist-song">
+                <div class = "content-playlist">
+                    <!--  -->
+<!-- <?php include'top-second.php' ?> -->
+                    
+    <!-- june 23 -->
+    <!-- <div class = "content-playlist-song"> -->
 
     <!-- <span class="material-symbols-outlined">
 play_arrow

@@ -1,0 +1,36 @@
+.playlist-recommendations{
+    width: 100%;
+    overflow-x: auto;
+    /* -webkit-overflow-scrolling: touch; enable touch scrolling for iOS devices */
+}
+.playlist-recommendations::-webkit-scrollbar {
+    display: none;
+  }
+.radio-setup{
+    width: max-content;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* grid-template-rows:1fr; */
+    gap: 20px;
+    /* overflow-x: auto;  */
+}
+.content-track{
+    padding: 0;
+    /* grid-auto-flow: row; */
+    grid-template-rows: 10fr 2fr;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    height: 100%;
+    width: 200px;
+}
+.home-title{
+    font-size: 3em;
+    display: inline-block;
+    margin-top: 2em;
+    color: orange;
+    transition: 2s;
+}
+.home-title:hover{
+    color: black;
+}

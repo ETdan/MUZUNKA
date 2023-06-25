@@ -20,6 +20,7 @@ html{
     grid-template-columns: 2fr 10fr;
     height: 100%;
     position: absolute;
+    /* top: 0; */
     /* width: 100%; */
     
 }
@@ -27,8 +28,8 @@ html{
     background: #0000;
     padding: 10px;
     /* height: 100%; */
-    /* position: sticky; */
-    /* top: 30px; */
+    position: sticky;
+    top: 0px;
     /* float: left; */
     border: 2px solid purple;
 }
@@ -44,7 +45,7 @@ html{
 .head-top{
     width: 100%;
     height: 100%;
-    position: sticky;
+    /* position: sticky; */
 }
 .main-logo{
     justify-content: center;
@@ -157,8 +158,8 @@ p.main-logo-text{
     background-color: transparent/*#ffff*/;
 }
 .content-track:hover{
-    opacity: 0.9;
     transform:scale(1.01);
+    border-bottom: 3px solid orange;
     /* background-color: #f1f1f1; */
 }
 .content-track{
@@ -181,6 +182,22 @@ p.main-logo-text{
     grid-auto-flow: row;
     grid-template-rows: 1fr 1fr;
     gap: 15px;
+}
+
+.x{
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 0px;
+}
+.player_section{
+    transform: scale(1);
+    opacity: 1;
+    width: 100%;
+    /* column-span: ; */
+    /* column-row: ; */
+}
+.player_section {
+    grid-column: 1 / 3; /* span from the first column to the third column */
 }
 /* Grid template for smaller viewports */
 @media screen and (max-width: 1368px) {

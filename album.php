@@ -8,7 +8,8 @@ echo "<link rel='stylesheet' href='../style/radio.css'>";
     .home-title{
         font-size: 3em;
         color: orange;
-        transition: 2s;
+        display: inline-block;
+        transition: color 2s;
     }
     .home-title:hover{
         color: black;
@@ -17,8 +18,7 @@ echo "<link rel='stylesheet' href='../style/radio.css'>";
 <?php 
 include 'view/top.php';
 ?>
-
-<h1 class="home-title">PLAYLISTS</h1>
+<h1 class="home-title">ALBUMS</h1>
 <div class="radio-setup">
     <div class="content-track">
             <div class="content-image">

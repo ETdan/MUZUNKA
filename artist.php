@@ -17,8 +17,7 @@ echo "<link rel='stylesheet' href='../style/radio.css'>";
 <?php 
 include 'view/top.php';
 ?>
-
-<h1 class="home-title">PLAYLISTS</h1>
+<h1 class="home-title">ARTISTS</h1>
 <div class="radio-setup">
     <div class="content-track">
             <div class="content-image">

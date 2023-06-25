@@ -1,0 +1,28 @@
+.content-track{
+    padding: 0;
+    /* grid-auto-flow: row; */
+    grid-template-rows: 10fr 2fr;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    height: 400px;
+    transition: 0.3s;
+}
+.content-song-detail{
+    grid-auto-flow: row;
+    grid-template-rows: 1fr;
+    font-size: 2em;
+}
+.content-song-detail{
+    gap: 0;
+}
+.radio-setup{
+    width: 100%;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3,1fr);
+    /* grid-template-rows:1fr; */
+    gap: 20px;
+}
+.content-image {
+    padding: 10px;
+}
