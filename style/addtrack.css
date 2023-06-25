@@ -1,0 +1,73 @@
+.content{
+    /* width: 100%; */
+    display: block;
+}
+.icon a{
+    /* font-size: 1em; */
+    white-space:nowrap;
+    text-align: right ;
+    align-items: start;
+}
+.material-symbols-outlined{
+    padding: 5px;
+    /* margin: 0; */
+    /* width: 44.44px; */
+}
+/* .form{
+    background-color: #ffff;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 1fr 10fr;
+    width: 100%;
+} */
+.addtrack-form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    grid-gap: 10px;
+}
+.addtrack-title{
+    font-size: 3em;
+    color: orange;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+label{
+    font-size: 2em;
+}
+.submit{
+    font-size: 2em;
+    align-items: center;
+    grid-column-start: 2;
+    grid-column-end: -1;
+    width: 200px;
+    height: 50px;
+    /* align-items: center; */
+    justify-self: end;
+}
+.file-input input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .file-input label::before {
+    content: 'Choose File';
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ccc;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .file-input label {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0;
+  }

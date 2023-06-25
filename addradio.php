@@ -7,15 +7,11 @@
     <link rel="shortcut icon" href="oig.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="style/home.css">
-    <link rel="stylesheet" href="style/admin.css">
+    <link rel="stylesheet" href="style/playlist.css">
+    <link rel="stylesheet" href="style/addtrack.css">
     <title>MUZUNKA</title>
     </style>
 </head>
-<style>
-    .nav div a{
-        font-size: 1em;
-    }
-</style>
 <body>
     <div class="sup-con">
 
@@ -51,26 +47,18 @@
                 </div>
             </div>
             <div class="content"> 
-                <div class="card">
-                    <div class="card-title">Users</div>
-                    <div class="card-number"><?php echo "";?></div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Trackes</div>
-                    <div class="card-number"><?php echo "";?></div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Albums</div>
-                    <div class="card-number"><?php echo "";?></div>
-                </div>
-                <div class="card">
-                    <div class="card-title">playlists</div>
-                    <div class="card-number"><?php echo "";?></div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Artists</div>
-                    <div class="card-number"><?php echo "";?></div>
-                </div>
+                <div class="content-playlist">
+                    <!-- <div class="form"> -->
+                        <p class="addtrack-title">Add Radio</p>
+                        <form class="addtrack-form" action="" method="post">
+                            <label for="songName">Title</label>
+                            <input type="text" name="songName">
+                            <label for="artistName">URL</label>
+                            <input type="text" name="strmingUrl">
+                            <button type="submit" class="submit">submit</button>
+                        </form>
+                    </div>
+                <!-- </div> --> 
                 
             </div>
         </section>
