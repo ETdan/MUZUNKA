@@ -33,6 +33,7 @@
                         <!-- <div class="icon"><span class="material-symbols-outlined">heart_plus</span><a href="http://localhost:3000/liked.php"> Liked </a></div> -->
                         <div class="icon"><span class="material-symbols-outlined">album</span> <a href="http://localhost:3000/addartist.php"> Add Artist </a></div>
                         <div class="icon"><span class="material-symbols-outlined">art_track</span><a href="http://localhost:3000/addalbum.php">Add Album </a></div>
+                        <div class="icon"><span class="material-symbols-outlined">shield_person</span><a href="http://localhost:3000/addadmin.php">Add Admin </a></div>
                         <div class="icon"><span class="material-symbols-outlined">radio</span><a href="http://localhost:3000/addradio.php">Add Radio </a></div>
                     </div>
                 </div>

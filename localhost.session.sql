@@ -43,3 +43,46 @@ CREATE TABLE playlistSongs (
     FOREIGN KEY (song_id) REFERENCES songs(id),
     FOREIGN KEY (addedBy) REFERENCES users(id)
 );
+-- poe
+--@block
+CREATE TABLE user (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  user_type CHAR(1),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+--@block
+CREATE TABLE song (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  artist VARCHAR(255) NOT NULL,
+  album VARCHAR(255),
+  genre VARCHAR(50),
+  duration INT,
+  file_location VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--@block
+CREATE TABLE playlists (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  user_id INT NOT NULL,
+  created_by CHAR(1),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+--@block
+CREATE TABLE playlist_songs (
+  playlist_id INT NOT NULL,
+  song_id INT NOT NULL
+);
+
+--@block
+CREATE TABLE likes (
+  user_id INT NOT NULL,
+  song_id INT NOT NULL
+);

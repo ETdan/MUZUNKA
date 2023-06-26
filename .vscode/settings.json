@@ -2,15 +2,16 @@
     "sqltools.connections": [
         {
             "mysqlOptions": {
-                "authProtocol": "default"
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
             },
             "previewLimit": 50,
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
             "name": "localhost",
-            "database": "MUZUNKA",
             "username": "root",
+            "database": "MUZUNKA",
             "password": ""
         }
     ],

@@ -1,7 +1,7 @@
 <?php 
 include 'view/headers.php';
 echo "<link rel='stylesheet' href='../style/playlist.css'>";
-echo "<link rel='stylesheet' href='../style/trackes'>";
+echo "<link rel='stylesheet' href='../style/trackes.css'>";
 echo "<link rel='stylesheet' href='../style/radio.css'>";
 ?>
 
@@ -9,6 +9,35 @@ echo "<link rel='stylesheet' href='../style/radio.css'>";
 include 'view/top.php';
 include 'view/top-second.php';
 ?>
+<!-- connecting with db -->
+<?php 
+
+$servername = "localhost";
+$username = "root";
+$pass = "";
+$db = "MUZUNKA";
+
+// Create connection
+$conn = new mysqli($servername, $username,$pass,$db);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " .$conn->connect_error);
+}
+//  echo "Connected successfully";
+
+// if ($conn->query($sql) === TRUE) {
+//   echo "Database created successfully";
+// } else {
+//   echo "Error creating database: " . $conn->error;
+// }
+
+
+$sql = "SELECT * FROM RADIO;";
+$result = $conn->query($sql);
+
+?>
+<!-- connection  -->
 <div class="radio-setup">
     <div class="content-track">
             <div class="content-image">
@@ -23,22 +52,46 @@ include 'view/top-second.php';
                 </div>
             </div>
     </div>
+    <?PHP 
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                // echo "
+                // <div class='content-track'>
+                //     <div class='content-image'>
+                //         <img src='$row[station_logo]' alt='>
+                //     </div>
+                //     <div class='content-song-detail'>
+                //         <div class='content-song-name'>$row[station_name]</div>
+                //         <div>
+                //             <audio src='$row[stream_stream_url]' id='id'>
+                //                 <source src='$row[stream_stream_url]' type='audio/mpeg'>
+                //             </audio>
+                //         </div>
+                //     </div>
+                // </div>";
+                echo"
+                    <div class='content-track'>
+                        <div class='content-image'>
+                            <img src='$row[station_logo]'>
+                        </div>
+                        <div class='content-song-detail'>
+                            <div class='content-song-name'>$row[station_name]</div>
+                            <div>
+                                <audio src='$row[stream_stream_url]'>
+                                    <source src='$row[stream_stream_url]'>
+                                </audio>
+                            </div>
+                        </div>
+                    </div>";
+            }
+          } else {
+            echo "0 results";
+          }
+    
+    ?>
 
-    <div class="content-track">
-            <div class="content-image">
-                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-            </div>
-            <div class="content-song-detail">
-                <div class="content-song-name">Sheger FM</div>
-                <div>
-                    <audio src="http://stream.zenolive.com/cwkxynwagt5tv" id="id">
-                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-            </div>
-    </div>
-
-    <div class="content-track">
+    <!-- <div class="content-track">
             <div class="content-image">
                 <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
             </div>
@@ -50,9 +103,9 @@ include 'view/top-second.php';
                     </audio>
                 </div>
             </div>
-    </div>
+    </div> -->
   
-    <div class="content-track">
+    <!-- <div class="content-track">
             <div class="content-image">
                 <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
             </div>
@@ -64,10 +117,10 @@ include 'view/top-second.php';
                     </audio>
                 </div>
             </div>
-    </div>
+    </div> -->
                     
-<div class="sheger">
-<p>SHEGER FM</p>
+<!-- <div class="sheger"> -->
+<!-- <p>SHEGER FM</p>
 <audio controls>
     <source src="http://stream.zenolive.com/cwkxynwagt5tv" type="audio/mpeg">
     Your browser doesn't support the HTML5 <audio> tag.
@@ -85,102 +138,103 @@ include 'view/top-second.php';
     <div class="anime">
         <p>anime FM</p>
         <audio controls>
-            <source src="http://audio.misproductions.com/japan128k" type="audio/mpeg">
+            <source src="http://audio.misproductions.com/japan128k" type="audio/mpeg"> -->
             <!-- Your browser doesn't support the HTML5 <audio> tag. -->
-        </audio>
+        <!-- </audio>
     </div>
     <div class="Jazz">
         <p>jazz FM</p>
         <audio controls>
-            <source src="http://64.95.243.43:8002/stream/1/" type="audio/mpeg">
+            <source src="http://64.95.243.43:8002/stream/1/" type="audio/mpeg"> -->
             <!-- Your browser doesn't support the HTML5 <audio> tag. -->
-        </audio>
+        <!-- </audio>
     </div>
     <div class="Jazz">
         <p>jazz FM</p>
         <audio controls>
-            <source src="http://144.217.158.59:5120/stream/1/" type="audio/mpeg">
+            <source src="http://144.217.158.59:5120/stream/1/" type="audio/mpeg"> -->
             <!-- Your browser doesn't support the HTML5 <audio> tag. -->
-        </audio>
-    </div>
+        <!-- </audio>
+    </div> -->
     <!-- #EXTINF:-1 tvg-logo="http://radio.pervii.com/im/0/1562988670.jpg" group-title="JAZZ Radio - radio.pervii.com", Smooth Jazz Florida Worldwide - 128 kbit/s
 http://144.217.158.59:5120/stream/1/ -->
-    <div class="rap">
+    <!-- <div class="rap">
         <p>Rap FM</p>
         <audio controls>
-            <source src="http://streams.bigfm.de/bigfm-oldschool-128-mp3" type="audio/mpeg">
+            <source src="http://streams.bigfm.de/bigfm-oldschool-128-mp3" type="audio/mpeg"> -->
             <!-- Your browser doesn't support the HTML5 <audio> tag. -->
-        </audio>
-    </div>
+        <!-- </audio>
+    </div> -->
     <!-- #EXTINF:-1 tvg-logo="http://radio.pervii.com/logo/94123.jpg" group-title="RAP Radio - radio.pervii.com", bigFM Oldschool Rap and HipHop - 128 kbit/s
 http://streams.bigfm.de/bigfm-oldschool-128-mp3 -->
-    <div class="rap">
+    <!-- <div class="rap">
         <p>Rap FM</p>
         <audio controls>
-            <source src="http://streams.bigfm.de/bigfm-oldschool-64-aac" type="audio/mpeg">
+            <source src="http://streams.bigfm.de/bigfm-oldschool-64-aac" type="audio/mpeg"> -->
             <!-- Your browser doesn't support the HTML5 <audio> tag. -->
-        </audio>
-    </div>
+        <!-- </audio>
+    </div> -->
     <!-- #EXTINF:-1 tvg-logo="http://radio.pervii.com/logo/94123.jpg" group-title="RAP Radio - radio.pervii.com", bigFM Oldschool - 128 kbit/s
 http://streams.bigfm.de/bigfm-oldschool-64-aac
 -->
-    <div class="ragge">
+    <!-- <div class="ragge">
         <p>ragge FM</p>
         <audio controls>
-            <source src="http://s02.whooshserver.net:9091/live.mp3" type="audio/mpeg">
+            <source src="http://s02.whooshserver.net:9091/live.mp3" type="audio/mpeg"> -->
             <!-- Your browser doesn't support the HTML5 <audio> tag. -->
-        </audio>
-    </div>
+        <!-- </audio>
+    </div> -->
     <!-- #EXTINF:-1 tvg-logo="http://radio.pervii.com/im/7/1551266037.jpg" group-title="REGGAE Radio - radio.pervii.com", Vibesfm.net - 96 kbit/s
 http://s02.whooshserver.net:9091/live.mp3
 -->
-    <div class="ragge">
+    <!-- <div class="ragge">
         <p>ragge FM</p>
         <audio controls>
-            <source src="http://hd.lagrosseradio.info:8000/lagrosseradio-reggae-192.mp3" type="audio/mpeg">
+            <source src="http://hd.lagrosseradio.info:8000/lagrosseradio-reggae-192.mp3" type="audio/mpeg"> -->
             <!-- Your browser doesn't support the HTML5 <audio> tag. -->
-        </audio>
-    </div>
+        <!-- </audio>
+    </div> -->
     <!--#EXTINF:-1 tvg-logo="http://radio.pervii.com/logo/97181.jpg" group-title="REGGAE Radio - radio.pervii.com", La Grosse Radio Reggae - Dub Dancehall Roots - From Paris - www.LaGrosseRadio.com - 192 kbit/s
     http://hd.lagrosseradio.info:8000/lagrosseradio-reggae-192.mp3
 -->
 
-<div class="jano">
+<!-- <div class="jano">
     <p>jano FM</p>
     <audio controls>
-        <source src="https://stream-159.zeno.fm/1cyn1as4v68uv?zs=yImzP1vkSCWja-MqfNhVxg" type="audio/mpeg">
+        <source src="https://stream-159.zeno.fm/1cyn1as4v68uv?zs=yImzP1vkSCWja-MqfNhVxg" type="audio/mpeg"> -->
         <!-- https://zeno.fm/_next/image/?url=https%3A%2F%2Fimages.zeno.fm%2Fx_coSsapKlumm6aEXNn-8eGe8UaiLb6zlpJZSyuuCpM%2Frs%3Afit%3A320%3A320%2Fg%3Ace%3A0%3A0%2FaHR0cHM6Ly9lZGl0b3IuemVub21lZGlhLmNvbS9yZXNvdXJjZXMvenNfc3RhdGlvbi82MzgxNTMvQ2FyZFdlYnNpdGUvaW1hZ2UucG5n.webp&w=1200&q=75 -->
-    </audio>
+    <!-- </audio>
 </div>
 <div class="bisrat">
     <p>bisrat FM</p>
     <audio controls>
-        <source src="https://stream-159.zeno.fm/1cyn1as4v68uv?zs=yImzP1vkSCWja-MqfNhVxg" type="audio/mpeg">
+        <source src="https://stream-159.zeno.fm/1cyn1as4v68uv?zs=yImzP1vkSCWja-MqfNhVxg" type="audio/mpeg"> -->
         <!-- https://zeno.fm/_next/image/?url=https%3A%2F%2Fimages.zeno.fm%2Fasp7NCS89bGnaFljjHVhLnrNVxV6Z1AF8qMslVR7GU0%2Frs%3Afit%3A268%3A268%2Fg%3Ace%3A0%3A0%2FaHR0cHM6Ly9zdHJlYW0tdG9vbHMuemVub21lZGlhLmNvbS9jb250ZW50L3N0YXRpb25zL2FneHpmbnBsYm04dGMzUmhkSE55TWdzU0NrRjFkR2hEYkdsbGJuUVlnSUNBNExMd3pnZ01DeElPVTNSaGRHbHZibEJ5YjJacGJHVVlnSUNRX0tMRHRRb01vZ0VFZW1WdWJ3L2ltYWdlLz91cGRhdGVkPTE2NjE1NzE1ODcwMDA.webp&w=384&q=75 -->
-    </audio>
+    <!-- </audio>
 </div>
 <div class="Ethio FM 107.8">
     <p>Ethio FM 107.8 FM</p>
     <audio controls>
-        <source src="https://stream-159.zeno.fm/72y045deqeruv?zs=NWR3FVc8SbWUTdGL2_uzHQ" type="audio/mpeg">
+        <source src="https://stream-159.zeno.fm/72y045deqeruv?zs=NWR3FVc8SbWUTdGL2_uzHQ" type="audio/mpeg"> -->
         <!-- Your browser doesn't support the HTML5 <audio> tag. -->
-    </audio>
+    <!-- </audio>
 </div>
 <div class="walta">
     <p>walta </p>
     <audio controls>
-        <source src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" type="audio/mpeg">
+        <source src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" type="audio/mpeg"> -->
         <!-- https://zeno.fm/_next/image/?url=https%3A%2F%2Fimages.zeno.fm%2F9I98ubcjY1NFS-7DI09VXLbslkHcDFsPBBDo3a6DgUQ%2Frs%3Afit%3A240%3A240%2Fg%3Ace%3A0%3A0%2FaHR0cHM6Ly9zdHJlYW0tdG9vbHMuemVub21lZGlhLmNvbS9jb250ZW50L3N0YXRpb25zL2FneHpmbnBsYm04dGMzUmhkSE55TWdzU0NrRjFkR2hEYkdsbGJuUVlnSURBX0lLMWhnc01DeElPVTNSaGRHbHZibEJ5YjJacGJHVVlnSUNBZ0lEeWlBb01vZ0VFZW1WdWJ3L2ltYWdlLz91cGRhdGVkPTE2NjE3NjM1MDUwMDA.webp&w=1200&q=100
  -->
-    </audio>
+    <!-- </audio>
 </div>
 <div class="ebc">
     <p>ebc </p>
     <audio controls>
-        <source src="https://stream-156.zeno.fm/rb6wbrap7yzuv?zs=HdNGbcyZTUWhaRRIUg-e-w" type="audio/mpeg">
+        <source src="https://stream-156.zeno.fm/rb6wbrap7yzuv?zs=HdNGbcyZTUWhaRRIUg-e-w" type="audio/mpeg"> -->
         <!-- https://zeno.fm/_next/image/?url=https%3A%2F%2Fimages.zeno.fm%2F9I98ubcjY1NFS-7DI09VXLbslkHcDFsPBBDo3a6DgUQ%2Frs%3Afit%3A240%3A240%2Fg%3Ace%3A0%3A0%2FaHR0cHM6Ly9zdHJlYW0tdG9vbHMuemVub21lZGlhLmNvbS9jb250ZW50L3N0YXRpb25zL2FneHpmbnBsYm04dGMzUmhkSE55TWdzU0NrRjFkR2hEYkdsbGJuUVlnSURBX0lLMWhnc01DeElPVTNSaGRHbHZibEJ5YjJacGJHVVlnSUNBZ0lEeWlBb01vZ0VFZW1WdWJ3L2ltYWdlLz91cGRhdGVkPTE2NjE3NjM1MDUwMDA.webp&w=1200&q=100-->
-    </audio>
-</div>
+    <!-- </audio>-->
+<!-- </div>  -->
+
 </div>
 
 <!-- from other file -- /view/top.php -->
@@ -190,6 +244,8 @@ http://s02.whooshserver.net:9091/live.mp3
 
 <script>
 var contentTrack=document.querySelectorAll(".content-track");
+var playerimage=document.querySelector(".player-info-image");
+var playername=document.querySelector(".player-info-info-info-name");
 
 
 var player=document.querySelector(".player");
@@ -219,11 +275,17 @@ contentTrack.forEach(function(track){
             if(!audio.paused){
                 audio.pause();
                 audio=track.children[1].children[1].children[0];
+                playerimage.children[0].setAttribute("src",track.children[0].children[0].getAttribute("src"));
+                playername.textContent=track.children[1].children[0].textContent;
+                console.log(playerimage);
                 audio.play();
             }
             else
             {
                 audio=track.children[1].children[1].children[0];
+                playerimage.children[0].setAttribute("src",track.children[0].children[0].getAttribute("src"));
+                playername.textContent=track.children[1].children[0].textContent;
+                // console.log(playerimage.getAttribute("src"));
                 if(audio.duration > 0 && !audio.paused)
                 {
                     audio.pause();
