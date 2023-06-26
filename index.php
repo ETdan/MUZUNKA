@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="oig.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="images/oig.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="style/home.css">
     <link rel="stylesheet" href="style/radio.css">
@@ -135,8 +135,33 @@
                     <!--  -->
                 </div>
                 <h1 class="home-title">Artists</h1>
+                <?php include'connection.php';
+                    $sql="SELECT * from artists limit 10;";
+                    $result=$conn->query($sql);
+                ?>
                 <div class="artist-recommendations playlist-recommendations">
                     <div class="radio-setup">
+                        <?PHP 
+                            if ($result->num_rows > 0) {
+                                // output data of each row
+                                while($row = $result->fetch_assoc()) {
+                                    echo"
+                                        <div class='content-track'>
+                                            <div class='content-image'>
+                                                <img src='$row[artist_image_url]'>
+                                            </div>
+                                            <div class='content-song-detail'>
+                                                <div class='content-song-name'>$row[artist_name]</div>
+                                                <div>
+                                                </div>
+                                            </div>
+                                        </div>";
+                                }
+                              } else {
+                                // echo "0 results";
+                              }
+                        ?>
+
                         <div class="content-track">
                             <div class="content-image">
                                 <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
@@ -150,208 +175,39 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
+                        
+
                     </div>
                     <!-- radio -->
                 </div><!-- artist -->
                 
                 <h1 class="home-title">Trackes</h1>
+                <?php
+                    $sql="SELECT * from song limit 10;";
+                    $result=$conn->query($sql);
+                ?>
                 <div class="track-recommendations playlist-recommendations">
                     <div class="radio-setup">
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-track">
-                            <div class="content-image">
-                                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-                            </div>
-                            <div class="content-song-detail">
-                                <div class="content-song-name">wetata</div>
-                                <div>
-                                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                                    </audio>
-                                </div>
-                            </div>
-                        </div>
+                    <?PHP 
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result->fetch_assoc()) {
+                                echo"
+                                    <div class='content-track'>
+                                        <div class='content-image'>
+                                            <img src='$row[song_image_url]'>
+                                        </div>
+                                        <div class='content-song-detail'>
+                                            <div class='content-song-name'>$row[title]</div>
+                                            <div>
+                                            </div>
+                                        </div>
+                                    </div>";
+                            }
+                          } else {
+                            // echo "0 results";
+                          }
+                    ?>
                         <div class="content-track">
                             <div class="content-image">
                                 <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
@@ -381,3 +237,4 @@ function myFunction() {
 </script> -->
 </body>
 </html>
+<?php $conn->close()?>

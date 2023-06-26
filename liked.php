@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="oig.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="images/oig.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="style/home.css">
     <link rel="stylesheet" href="style/trackes.css">
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </section>
-
+<?php include'connection.php'?>
         <section class="main">
             <div class="top">
                 <div class="account" style="color:red">
@@ -47,6 +47,52 @@
             </div>
             <div class="content"> 
                 <div class = "content-playlist-song">
+                <?php include'connection.php';
+                $sql="SELECT * from likes;";
+                $result=$conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result->fetch_assoc()) {
+                                /**
+                                 * 
+                                 * 
+                                 * add user id to the query below
+                                 * 
+                                 * 
+                                 */
+                                $sql="select * from song where id=$row[song_id];";
+                                $r=$conn->query($sql);
+                                $s="";
+                                while($rr = $r->fetch_assoc()) {
+                                    $duration=$rr['duration'];
+                                    $duration=number_format($duration/60 , 2, ':', ':');
+
+                                    echo"
+                                    <div class='content-track' data-url='$rr[file_location]' id='$rr[id]'>
+                                        <div class='content-image'>
+                                            <img src='$rr[song_image_url]'>
+                                        </div>
+                                        <div class='content-song-detail'>
+                                            <div class='content-song-name'>$rr[artist]</div>
+                                            <div class='content-artist'>$rr[title]</div>
+                                            <div>
+                                                <audio src='$rr[file_location]' >
+                                                    <source src='$rr[file_location]' type='audio/mpeg'>
+                                                </audio>
+                                            </div>
+
+                                        </div>
+                                        <div class='content-like'>
+                                            $s
+                                        </div>
+                                        <div class='content-duration'>$duration</div>
+                                    </div>";
+                                }
+                            }
+                          } else {
+                            // echo "0 results";
+                          }
+                    ?>
                     <div class="content-track" data-url="sounds/Wegdayit - Rega Bey Bereggae.mp3">
                         <div class="content-image">
                             <img src="/images/OIG.jpg" alt="">
@@ -141,12 +187,12 @@
                     <div class="player-info-image"><img src="../images/OIG.jpg" alt=""></div>
                     <div class="player-info-info">
                         <div class="player-info-info-name">
-                            <div class="player-info-info-info-name">4 your eyez only:j.cole</div>
-                            <div class="player-info-info-info-duration">3:30</div>
+                            <div class="player-info-info-info-name"><span>4 your eyez only</span> : <span>j.cole</span></div>
+                            <div class="player-info-info-info-duration">3:33</div>
                         </div>
                         <div class="player-info-info-data"><div class="progress">
                             <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;"
-                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Description</div>
+                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">.</div>
                         </div></div>
                     </div>
                 </div>
@@ -156,6 +202,10 @@
     </div>
 <script>
 var contentTrack=document.querySelectorAll(".content-track");
+
+var playerimage=document.querySelector(".player-info-image");
+var playername=document.querySelector(".player-info-info-info-name");
+var playerduration=document.querySelector(".player-info-info-info-duration");
 
 var player=document.querySelector(".player");
 var playSong=document.getElementById("playSong");
@@ -180,6 +230,11 @@ contentTrack.forEach(function(track){
             if(!audio.paused){
                 audio.pause();
                 audio=track.children[1].children[2].children[0];
+                playerimage.children[0].setAttribute("src",track.children[0].children[0].getAttribute("src"));
+                playername.children[0].textContent=track.children[1].children[0].textContent;
+                playername.children[1].textContent=track.children[1].children[1].textContent;
+                playerduration.textContent=(track.children[3].textContent);
+                
                 audio.play();
                 // var updateProgressBar = setInterval(function() {
                 //     progress = audio.currentTime / audio.duration;
@@ -196,6 +251,11 @@ contentTrack.forEach(function(track){
             else
             {
                 audio=track.children[1].children[2].children[0];
+                playerimage.children[0].setAttribute("src",track.children[0].children[0].getAttribute("src"));
+                playername.children[0].textContent=track.children[1].children[0].textContent;
+                playername.children[1].textContent=track.children[1].children[1].textContent;
+                playerduration.textContent=(track.children[3].textContent);
+                
                 if(audio.duration > 0 && !audio.paused)
                 {
                     audio.pause();
@@ -235,7 +295,7 @@ pauseSong.addEventListener("click",function(e){
     audio.pause();
 })
 
-</script>
 </script> 
 </body>
 </html>
+<?php $conn->close()?>

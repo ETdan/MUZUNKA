@@ -16,66 +16,36 @@ echo "<link rel='stylesheet' href='../style/radio.css'>";
 </style>
 <?php 
 include 'view/top.php';
+include 'connection.php';
+
+
+$sql="SELECT * from artists;";
+$result=$conn->query($sql);
 ?>
 <h1 class="home-title">ARTISTS</h1>
+
 <div class="radio-setup">
-    <div class="content-track">
-            <div class="content-image">
-                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-            </div>
-            <div class="content-song-detail">
-                <div class="content-song-name">wetata</div>
-                <div>
-                    <audio src="https://stream-154.zeno.fm/t5td4ky6hkeuv?zs=TzRUw_7XQbaIA8cEXbBt_g" id="id">
-                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-            </div>
-    </div>
 
-    <div class="content-track">
-            <div class="content-image">
-                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-            </div>
-            <div class="content-song-detail">
-                <div class="content-song-name">Sheger FM</div>
-                <div>
-                    <audio src="http://stream.zenolive.com/cwkxynwagt5tv" id="id">
-                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-            </div>
-    </div>
-
-    <div class="content-track">
-            <div class="content-image">
-                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-            </div>
-            <div class="content-song-detail">
-                <div class="content-song-name">BISRAT FM</div>
-                <div>
-                    <audio src="https://stream-159.zeno.fm/1cyn1as4v68uv?zs=yImzP1vkSCWja-MqfNhVxg" id="id">
-                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-            </div>
-    </div>
-  
-    <div class="content-track">
-            <div class="content-image">
-                <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
-            </div>
-            <div class="content-song-detail">
-                <div class="content-song-name">EBC FM</div>
-                <div>
-                    <audio src="https://stream-156.zeno.fm/rb6wbrap7yzuv?zs=HdNGbcyZTUWhaRRIUg-e-w"id="id">
-                        <source src="sounds/Wegdayit - Rega Bey Bereggae.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-            </div>
-    </div>
-
-
+    <?PHP 
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo"
+                    <div class='content-track'>
+                        <div class='content-image'>
+                            <img src='$row[artist_image_url]'>
+                        </div>
+                        <div class='content-song-detail'>
+                            <div class='content-song-name'>$row[artist_name]</div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>";
+            }
+          } else {
+            echo "0 results";
+          }
+    ?>
 </div>
 </section><!-- main -->
 
@@ -91,3 +61,4 @@ function myFunction() {
 </script> -->
 </body>
 </html>
+<?php $conn->close()?>

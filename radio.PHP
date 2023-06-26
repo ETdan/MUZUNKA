@@ -7,39 +7,30 @@ echo "<link rel='stylesheet' href='../style/radio.css'>";
 
 <?php 
 include 'view/top.php';
-include 'view/top-second.php';
+// include 'view/top-second.php';
 ?>
 <!-- connecting with db -->
 <?php 
-
-$servername = "localhost";
-$username = "root";
-$pass = "";
-$db = "MUZUNKA";
-
-// Create connection
-$conn = new mysqli($servername, $username,$pass,$db);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " .$conn->connect_error);
-}
-//  echo "Connected successfully";
-
-// if ($conn->query($sql) === TRUE) {
-//   echo "Database created successfully";
-// } else {
-//   echo "Error creating database: " . $conn->error;
-// }
-
-
-$sql = "SELECT * FROM RADIO;";
+    include'connection.php'
+?>
+<?php
+$sql = "SELECT * FROM radio;";
 $result = $conn->query($sql);
 
 ?>
+<div class = "content-playlist-info">
+    <div class = "content-playlist-info-pic">
+        <img class="one" src = "images/OIG.jpg" >
+    </div>
+    <div class = "content-playlist-info-detail">
+        <h2 class="content-playlist-info-detail-title"> RADIO </h2>
+        <p class="content-playlist-info-detail-detail">Radio. Music . <?php echo"$result->num_rows"?> Radios </p>
+        <!-- <div><span class="material-symbols-outlined">graphic_eq</span></div> -->
+    </div>
+</div>
 <!-- connection  -->
 <div class="radio-setup">
-    <div class="content-track">
+    <!-- <div class="content-track">
             <div class="content-image">
                 <img src="/images/Screenshot 2023-06-24 100429.png" alt="">
             </div>
@@ -51,7 +42,7 @@ $result = $conn->query($sql);
                     </audio>
                 </div>
             </div>
-    </div>
+    </div> -->
     <?PHP 
         if ($result->num_rows > 0) {
             // output data of each row
@@ -258,7 +249,7 @@ var prevSong=document.getElementById("prevSong");
 nextSong.style.display="none";
 prevSong.style.display="none";
 
-var audio=document.getElementById("id");
+var audio=document.querySelectorAll(".content-track")[0].children[1].children[1].children[0];
 var first=0;
 
 var progress;
@@ -321,3 +312,4 @@ playSong.addEventListener("click",function(e){
 })
 
 </script>
+<?php $conn->close();?>

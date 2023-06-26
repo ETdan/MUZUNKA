@@ -86,3 +86,23 @@ CREATE TABLE likes (
   user_id INT NOT NULL,
   song_id INT NOT NULL
 );
+--@block
+CREATE TABLE Albums (
+  album_id INT PRIMARY KEY AUTO_INCREMENT,
+  album_title VARCHAR(255) NOT NULL,
+  album_artist VARCHAR(255) NOT NULL,
+  album_release_year INT,
+  album_genre VARCHAR(255),
+  album_cover_image_url VARCHAR(255),
+  album_description TEXT
+);
+--@block
+ALTER TABLE Albums
+ADD COLUMN num_songs INT;
+--@block
+CREATE TABLE Artists (
+  artist_id INT PRIMARY KEY AUTO_INCREMENT,
+  artist_name VARCHAR(255) NOT NULL,
+  artist_image_url VARCHAR(255),
+  artist_bio TEXT
+);
